@@ -1,16 +1,30 @@
 let name = prompt('Qual seu nome turista?')
 let question = prompt('Você visitou alguma cidade? (ex:s/n)')
-let city = []
+let city = ''
 let numberOfCities = 0
-
+let visitedCities = 0
 
 while(question == 's'){
-  city[numberOfCities] = prompt('Qual o nome da cidade visitada?')
-  numberOfCities += 1
+  city = prompt('Qual o nome da cidade visitada?')
+  if (numberOfCities == 0){
+    visitedCities = `- ${city}`
+  } else {
+    visitedCities += `
+ - ${city}`
+  }
+  numberOfCities++
   
   question = prompt('Você visitou alguma outra cidade? (ex:s/n)')
 
 }
-alert(`Turista: ${name}
+
+if(numberOfCities > 0){
+  alert(`Turista: ${name}
 Quantidade de cidades visitadas: ${numberOfCities}
-Cidades visitadas:${city}`)
+Cidades visitadas: 
+ ${visitedCities}`)
+} else {
+  alert(`Turista: ${name}
+Quantidade de cidades visitadas: ${numberOfCities}
+Nenhuma cidade visitada`)
+}
